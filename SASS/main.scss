@@ -1,80 +1,7 @@
-/* Подключение локального шрифта Raleway-700 - latin */
-@font-face {
-  font-family: 'Raleway';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap; /* Добавляем вручную свойство для отображения шрифта до загрузки */
-  src: local('Raleway Bold'), local('Raleway-Bold'),
-    url('../fonts/raleway-v16-latin-700.woff2') format('woff2'),
-    /* Chrome 26+, Opera 23+, Firefox 39+ */
-      url('../fonts/raleway-v16-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-}
-/* Подключение Аннимации на Логотип,если не поключен линк на анимацию */
-/* @keyframes pulse {
-  from {
-    -webkit-transform: scale3d(1, 1, 1);
-    transform: scale3d(1, 1, 1);
-  }
+@import './base/fonts';
+@import './utils/variables';
+@import './base/base';
 
-  50% {
-    -webkit-transform: scale3d(1.05, 1.05, 1.05);
-    transform: scale3d(1.05, 1.05, 1.05);
-  }
-
-  to {
-    -webkit-transform: scale3d(1, 1, 1);
-    transform: scale3d(1, 1, 1);
-  }
-} */
-
-:root {
-  --main-font: 'Roboto', sans-serif;
-  --font-logo: 'Raleway', sans-serif;
-  --main-title-color: #212121;
-  --main-write-color: #ffffff;
-  --main-background-color: #ffffff;
-  --text-color: #757575;
-  --hover-color: #2196f3;
-  --background-color: #f5f4fa;
-  --icon-color: #afb1b8;
-  --transition-duration-250ms: 250ms; /* Сделано для проверки применения свойства путем увеличения,например до 2500ms */
-  --cubic-bezier: cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-body {
-  font-family: var(--main-font);
-  font-size: 14px;
-  font-weight: 400;
-  letter-spacing: 0.03em;
-  color: var(--main-title-color);
-
-  background-color: var(--main-background-color);
-}
-/*                                    Общие сбросы свойств */
-/* Убираем точки и отступы в списках */
-.list {
-  padding: 0;
-  margin: 0;
-  list-style: none;
-}
-/* Убираем подчеркивание в ссылках */
-.link {
-  text-decoration: none;
-}
-/* Убираем наклонность текста */
-.address {
-  font-style: normal;
-}
-/* Убираем эффект 2рх  и оптимизируем фото */
-img {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
-/* Убираем возможность изменять размер пользователю */
-textarea {
-  resize: none;
-}
 /* Скрываем визуально текст и чекбокс*/
 .visually-hidden {
   position: absolute;
@@ -104,7 +31,7 @@ textarea {
 
 /* Логотип */
 .logo {
-  font-family: var(--font-logo);
+  font-family: $font-logo;
   font-weight: 700;
   font-size: 26px;
   line-height: 1.19;
@@ -134,20 +61,20 @@ textarea {
   font-weight: 500;
   line-height: 1.14;
   letter-spacing: 0.02em;
-  color: var(--main-title-color);
+  color: $main-title-color;
 
-  transition: color var(--transition-duration-250ms) var(--cubic-bezier);
+  transition: color $transition-duration-250ms $cubic-bezier;
 }
 /* Accent эффект */
 .nav-link:hover,
 .nav-link:focus,
 .contakt-link:hover,
 .contakt-link:focus {
-  color: var(--hover-color);
+  color: $hover-color;
 }
 /* "Эффект присутствия на странице */
 .nav-link.current {
-  color: var(--hover-color);
+  color: $hover-color;
 }
 .nav-link.current::after {
   position: absolute;
@@ -157,7 +84,7 @@ textarea {
   content: '';
   height: 4px;
   border-radius: 2px;
-  background-color: var(--hover-color);
+  background-color: $hover-color;
   display: block;
 }
 .nav-list .item {
@@ -167,9 +94,9 @@ textarea {
   font-weight: 500;
   line-height: 1.14;
   letter-spacing: 0.02em;
-  color: var(--text-color);
+  color: $text-color;
 
-  transition: color var(--transition-duration-250ms) var(--cubic-bezier);
+  transition: color $transition-duration-250ms $cubic-bezier;
 }
 .header > .container {
   display: flex;
@@ -211,15 +138,15 @@ textarea {
 .icon-phone {
   align-self: center;
   margin-right: 10px;
-  fill: var(--text-color);
+  fill: $text-color;
 
-  transition: fill var(--transition-duration-250ms) var(--cubic-bezier);
+  transition: fill $transition-duration-250ms $cubic-bezier;
 }
 .contakt-link:hover .icon-mail,
 .contakt-link:focus .icon-mail,
 .contakt-link:hover .icon-phone,
 .contakt-link:focus .icon-phone {
-  fill: var(--hover-color);
+  fill: $hover-color;
 }
 .header {
   border-bottom: 1px solid #ececec;
@@ -237,7 +164,7 @@ textarea {
 
   text-align: center;
   /* Зададим фон,чтобы было видно текст в случае медленной загрузки фонового изображения */
-  background-color: var(--text-color);
+  background-color: $text-color;
   background-image: linear-gradient(
       rgba(47, 48, 58, 0.8),
       rgba(47, 48, 58, 0.8)
@@ -258,7 +185,7 @@ textarea {
   letter-spacing: 0.06em;
   text-transform: uppercase;
 
-  color: var(--main-write-color);
+  color: $main-write-color;
 }
 .hero-button {
   min-width: 200px;
@@ -276,19 +203,18 @@ textarea {
   line-height: 1.88;
   letter-spacing: 0.06em;
 
-  background-color: var(--hover-color);
-  color: var(--main-write-color);
+  background-color: $hover-color;
+  color: $main-write-color;
   cursor: pointer;
   outline: none;
 
-  transition: background-color var(--transition-duration-250ms)
-      var(--cubic-bezier),
-      border var(--transition-duration-250ms) var(--cubic-bezier);
+  transition: background-color $transition-duration-250ms $cubic-bezier,
+    border $transition-duration-250ms $cubic-bezier;
 }
 .hero-button:hover,
 .hero-button:focus {
   background-color: #2196f3;
-  border: 1px solid var(--main-write-color);
+  border: 1px solid $main-write-color;
 }
 
 /* Секция О нас */
@@ -318,7 +244,7 @@ textarea {
   margin: 0;
 
   line-height: 1.71;
-  color: var(--text-color);
+  color: $text-color;
 }
 
 .about-bg {
@@ -328,7 +254,7 @@ textarea {
   padding-right: 100px;
   padding-left: 100px;
   margin-bottom: 30px;
-  background-color: var(--background-color);
+  background-color: $background-color;
   border-radius: 4px;
 }
 .about-icon {
@@ -369,7 +295,7 @@ textarea {
   text-transform: uppercase;
 
   background-color: rgba(47, 48, 58, 0.8);
-  color: var(--main-write-color);
+  color: $main-write-color;
 }
 .offer-list {
   display: flex;
@@ -382,7 +308,7 @@ textarea {
 .team {
   padding-top: 94px;
   padding-bottom: 94px;
-  background-color: var(--background-color);
+  background-color: $background-color;
 }
 .team-list {
   display: flex;
@@ -417,7 +343,7 @@ textarea {
   line-height: 1.19;
   text-align: center;
 
-  color: var(--text-color);
+  color: $text-color;
 }
 .name-social-list {
   display: flex;
@@ -432,7 +358,7 @@ textarea {
   box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.2), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 1px 3px rgba(0, 0, 0, 0.12);
 
-  background-color: var(--main-background-color);
+  background-color: $main-background-color;
 }
 .team-card {
   padding-top: 30px;
@@ -449,24 +375,23 @@ textarea {
   align-items: center;
   border-radius: 50%;
 
-  transition: background-color var(--transition-duration-250ms)
-    var(--cubic-bezier);
+  transition: background-color $transition-duration-250ms $cubic-bezier;
 }
 .name-social-item .icon {
   width: 20px;
   height: 20px;
-  fill: var(--icon-color);
+  fill: $icon-color;
 
-  transition: fill var(--transition-duration-250ms) var(--cubic-bezier);
+  transition: fill $transition-duration-250ms $cubic-bezier;
 }
 
 .name-social-item > a:hover,
 .name-social-item > a:focus {
-  background-color: var(--hover-color);
+  background-color: $hover-color;
 }
 .name-social-item > a:hover .icon,
 .name-social-item > a:focus .icon {
-  fill: var(--main-write-color);
+  fill: $main-write-color;
 }
 /* Секция Постоянные клиенты */
 .customers {
@@ -494,23 +419,23 @@ textarea {
   height: 90px;
   border: 1px solid #afb1b8;
   border-radius: 4px;
-  background-color: var(--main-background-color);
+  background-color: $main-background-color;
 
-  transition: border-color var(--transition-duration-250ms) var(--cubic-bezier);
+  transition: border-color $transition-duration-250ms $cubic-bezier;
 }
 .customers-item > a:hover,
 .customers-item > a:focus {
-  border-color: var(--hover-color);
+  border-color: $hover-color;
 }
 .customers-icon {
-  fill: var(--icon-color);
+  fill: $icon-color;
 
-  transition: fill var(--transition-duration-250ms) var(--cubic-bezier);
+  transition: fill $transition-duration-250ms $cubic-bezier;
 }
 
 .customers-item > a:hover .customers-icon,
 .customers-item > a:focus .customers-icon {
-  fill: var(--hover-color);
+  fill: $hover-color;
 }
 
 /*                                Секция Портфолио */
@@ -520,8 +445,8 @@ textarea {
 }
 
 .filter-button.current {
-  background-color: var(--hover-color);
-  color: var(--main-write-color);
+  background-color: $hover-color;
+  color: $main-write-color;
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.12), 0px 1px 2px rgba(0, 0, 0, 0.08),
     0px 3px 1px rgba(0, 0, 0, 0.1);
   border-color: transparent;
@@ -542,22 +467,21 @@ textarea {
   letter-spacing: 0.03em;
   text-align: center;
 
-  background-color: var(--background-color);
-  color: var(--main-title-color);
+  background-color: $background-color;
+  color: $main-title-color;
 
   border-radius: 4px;
   border-color: transparent;
   cursor: pointer;
 
-  transition: background-color var(--transition-duration-250ms)
-      var(--cubic-bezier),
-    color var(--transition-duration-250ms) var(--cubic-bezier),
-    box-shadow var(--transition-duration-250ms) var(--cubic-bezier);
+  transition: background-color $transition-duration-250ms $cubic-bezier,
+    color $transition-duration-250ms $cubic-bezier,
+    box-shadow $transition-duration-250ms $cubic-bezier;
 }
 .filter-button:hover,
 .filter-button:focus {
-  background-color: var(--hover-color);
-  color: var(--main-write-color);
+  background-color: $hover-color;
+  color: $main-write-color;
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.12), 0px 1px 2px rgba(0, 0, 0, 0.08),
     0px 3px 1px rgba(0, 0, 0, 0.1);
 }
@@ -578,7 +502,7 @@ textarea {
   line-height: 2;
   letter-spacing: 0.06em;
 
-  color: var(--main-title-color);
+  color: $main-title-color;
 }
 .portfolio-web,
 .portfolio-design,
@@ -590,7 +514,7 @@ textarea {
   font-size: 16px;
   line-height: 1.88;
 
-  color: var(--text-color);
+  color: $text-color;
 }
 
 .portfolio > .list {
@@ -599,7 +523,7 @@ textarea {
 }
 .portfolio-link {
   display: block;
-  transition: box-shadow var(--transition-duration-250ms) var(--cubic-bezier);
+  transition: box-shadow $transition-duration-250ms $cubic-bezier;
 }
 .portfolio-link:hover,
 .portfolio-link:focus {
@@ -646,10 +570,10 @@ textarea {
   font-size: 18px;
   line-height: 1.56;
   background-color: rgba(33, 150, 243, 0.9);
-  color: var(--main-write-color);
+  color: $main-write-color;
 
   transform: translateY(100%);
-  transition: transform var(--transition-duration-250ms) var(--cubic-bezier);
+  transition: transform $transition-duration-250ms $cubic-bezier;
 }
 .portfolio-link:hover .portfolio-about,
 .portfolio-link:focus .portfolio-about {
@@ -664,12 +588,12 @@ textarea {
   padding-bottom: 60px;
 }
 .white-studio {
-  color: var(--main-write-color);
+  color: $main-write-color;
 }
 
 .address-link {
   line-height: 1.71;
-  color: var(--main-write-color);
+  color: $main-write-color;
 }
 
 .address-mail,
@@ -683,15 +607,15 @@ textarea {
   margin-bottom: 20px;
 
   line-height: 1.14;
-  color: var(--main-write-color);
+  color: $main-write-color;
   text-transform: uppercase;
 }
 .accent-link {
-  transition: color var(--transition-duration-250ms) var(--cubic-bezier);
+  transition: color $transition-duration-250ms $cubic-bezier;
 }
 .accent-link:hover,
 .accent-link:focus {
-  color: var(--hover-color);
+  color: $hover-color;
 }
 .footer .container {
   display: flex;
@@ -727,13 +651,12 @@ textarea {
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 0.1);
 
-  transition: background-color var(--transition-duration-250ms)
-    var(--cubic-bezier);
+  transition: background-color $transition-duration-250ms $cubic-bezier;
 }
 .footer-social-item .icon {
   width: 20px;
   height: 20px;
-  fill: var(--main-write-color);
+  fill: $main-write-color;
 }
 .footer-social-item:not(:last-child) {
   margin-right: 10px;
@@ -741,7 +664,7 @@ textarea {
 
 .footer-social-item > a:hover,
 .footer-social-item > a:focus {
-  background-color: var(--hover-color);
+  background-color: $hover-color;
 }
 /* .footer-form {
   display: flex;
@@ -755,7 +678,7 @@ textarea {
   padding-bottom: 15px;
   padding-right: 16px;
 
-  font-family: var(--main-font);
+  font-family: $main-font;
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -769,7 +692,7 @@ textarea {
   border-radius: 4px;
   cursor: pointer;
 
-  transition: border var(--transition-duration-250ms) var(--cubic-bezier);
+  transition: border $transition-duration-250ms $cubic-bezier;
 }
 .footer-form-button {
   display: inline-flex;
@@ -786,25 +709,25 @@ textarea {
   line-height: 1.87;
   letter-spacing: 0.06em;
 
-  color: var(--main-write-color);
-  background-color: var(--hover-color);
+  color: $main-write-color;
+  background-color: $hover-color;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
   border-radius: 4px;
   cursor: pointer;
 
-  transition: outline var(--transition-duration-250ms) var(--cubic-bezier);
+  transition: outline $transition-duration-250ms $cubic-bezier;
 }
 .footer-form-button:hover,
 .footer-form-input:hover,
 .footer-form-button:focus,
 .footer-form-input:focus {
-  outline: 1px solid var(--main-write-color);
+  outline: 1px solid $main-write-color;
 }
 .footer-form-button .icon {
   margin-left: 10px;
   width: 24px;
   height: 24px;
-  fill: var(--main-write-color);
+  fill: $main-write-color;
 }
 /*                               Модальное окно */
 .backdrop {
@@ -832,7 +755,7 @@ textarea {
   padding-right: 40px;
   padding-bottom: 40px;
 
-  background-color: var(--main-background-color);
+  background-color: $main-background-color;
 
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
@@ -856,11 +779,11 @@ textarea {
   height: 30px;
   border-radius: 50%;
 
-  background-color: var(--main-background-color);
+  background-color: $main-background-color;
   border: 1px solid rgba(0, 0, 0, 0.1);
   cursor: pointer;
 
-  transition: border-color var(--transition-duration-250ms) var(--cubic-bezier);
+  transition: border-color $transition-duration-250ms $cubic-bezier;
 }
 .btn-close {
   position: absolute;
@@ -871,16 +794,15 @@ textarea {
   width: 18px;
   height: 18px;
 
-  transition: fill var(--transition-duration-250ms) var(--cubic-bezier);
+  transition: fill $transition-duration-250ms $cubic-bezier;
 }
 .form-modal-button:hover .btn-close,
 .form-modal-button:focus .btn-close {
-  fill: var(--hover-color);
+  fill: $hover-color;
 }
 .form-modal-button:focus {
   outline: none;
-  border-color: var(--hover-color);
-
+  border-color: $hover-color;
 }
 .form-modal-field {
   position: relative;
@@ -894,15 +816,14 @@ textarea {
 
   margin-bottom: 20px;
 }
-.form-modal-checkbox-wrapper{
+.form-modal-checkbox-wrapper {
   position: relative;
-  
+
   display: flex;
   align-items: center;
   justify-content: center;
-  
+
   margin-bottom: 30px;
-   
 }
 .form-modal-input,
 .form-modal-textarea {
@@ -915,7 +836,7 @@ textarea {
   border-radius: 4px;
 
   cursor: pointer;
-  transition: border-color var(--transition-duration-250ms) var(--cubic-bezier);
+  transition: border-color $transition-duration-250ms $cubic-bezier;
 }
 .form-modal-input {
   width: 100%;
@@ -931,27 +852,26 @@ textarea {
   left: 16px;
 }
 
-
 .form-modal-input,
 .form-modal-textarea,
 .form-modal-label {
-  font-family: var(--main-font);
+  font-family: $main-font;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 1.14;
   letter-spacing: 0.01em;
-  color: var(--text-color);
+  color: $text-color;
 }
 .form-modal-label {
   position: absolute;
   left: 42px;
   top: 12px;
 
-  transition: font-size var(--transition-duration-250ms) var(--cubic-bezier),
-  line-height var(--transition-duration-250ms) var(--cubic-bezier),
-  color var(--transition-duration-250ms) var(--cubic-bezier),
-  transform var(--transition-duration-250ms) var(--cubic-bezier);
+  transition: font-size $transition-duration-250ms $cubic-bezier,
+    line-height $transition-duration-250ms $cubic-bezier,
+    color $transition-duration-250ms $cubic-bezier,
+    transform $transition-duration-250ms $cubic-bezier;
 }
 
 .form-modal-icon {
@@ -962,15 +882,14 @@ textarea {
   width: 18px;
   height: 18px;
 
-  transition: fill var(--transition-duration-250ms) var(--cubic-bezier);
+  transition: fill $transition-duration-250ms $cubic-bezier;
 }
 .form-modal-input:focus + .form-modal-label,
 .form-modal-input:hover + .form-modal-label,
-.form-modal-input:not(:placeholder-shown) + .form-modal-label
-{
+.form-modal-input:not(:placeholder-shown) + .form-modal-label {
   font-size: 12px;
   line-height: 1.17;
-  color: var(--hover-color);
+  color: $hover-color;
 
   transform: translate(-28px, -30px);
 }
@@ -978,7 +897,7 @@ textarea {
 .form-modal-input:hover ~ .form-modal-icon,
 .form-modal-input:focus:not(:placeholder-shown) ~ .form-modal-icon,
 .form-modal-input:hover:not(:placeholder-shown) ~ .form-modal-icon {
-  fill: var(--hover-color);
+  fill: $hover-color;
 }
 
 .form-modal-input:not(:placeholder-shown) ~ .form-modal-icon {
@@ -991,8 +910,8 @@ textarea {
 .form-modal-input:focus:not(:placeholder-shown),
 .form-modal-textarea:focus:not(:placeholder-shown),
 .form-modal-input:hover:not(:placeholder-shown),
-.form-modal-textarea:hover:not(:placeholder-shown)  {
-  border-color: var(--hover-color);
+.form-modal-textarea:hover:not(:placeholder-shown) {
+  border-color: $hover-color;
   outline: none;
 }
 .form-modal-textarea:not(:placeholder-shown),
@@ -1004,14 +923,14 @@ textarea {
 .form-modal-textarea:not(:placeholder-shown) + .form-modal-label {
   font-size: 12px;
   line-height: 1.17;
-  color: var(--hover-color);
+  color: $hover-color;
 
   transform: translate(-2px, -30px);
 }
 
 .form-modal-checkbox-label {
   line-height: 1.71;
-  color: var(--text-color);
+  color: $text-color;
   cursor: pointer;
 }
 /* Cделаем временно подчеркивание для визуализации */
@@ -1020,37 +939,36 @@ color: red;
 } */
 .form-modal-checkbox:checked ~ .form-modal-icon-check {
   border-color: transparent;
-  background-color: var(--hover-color);
-  }
-  /* Для доступности при фокусе на чекбокс зададим тень */
- .form-modal-checkbox:focus ~ .form-modal-icon-check,
- .form-modal-checkbox:hover ~ .form-modal-icon-check {
-  box-shadow: 0 0 6px rgba(0,0,0,0.5);
-} 
+  background-color: $hover-color;
+}
+/* Для доступности при фокусе на чекбокс зададим тень */
+.form-modal-checkbox:focus ~ .form-modal-icon-check,
+.form-modal-checkbox:hover ~ .form-modal-icon-check {
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
+}
 .form-modal-icon-check {
   margin-right: 8px;
   width: 16px;
   height: 15px;
 
-  border: 2px solid var(--main-title-color);
+  border: 2px solid $main-title-color;
   border-radius: 2px;
-  fill: var(--main-write-color);
+  fill: $main-write-color;
   cursor: pointer;
-  
-  transition: border-color var(--transition-duration-250ms) var(--cubic-bezier),
-  background-color var(--transition-duration-250ms) var(--cubic-bezier),
-  box-shadow var(--transition-duration-250ms) var(--cubic-bezier) ;
+
+  transition: border-color $transition-duration-250ms $cubic-bezier,
+    background-color $transition-duration-250ms $cubic-bezier,
+    box-shadow $transition-duration-250ms $cubic-bezier;
 }
 .form-modal-link {
-  color: var(--hover-color);
+  color: $hover-color;
 
-  transition: border-color var(--transition-duration-250ms) var(--cubic-bezier);
+  transition: border-color $transition-duration-250ms $cubic-bezier;
 }
 .form-modal-link:focus {
   outline: none;
-  border: 1px solid var(--hover-color);
+  border: 1px solid $hover-color;
   border-radius: 2px;
-
 }
 .form-modal-btn {
   display: flex;
@@ -1066,23 +984,23 @@ color: red;
   font-size: 16px;
   line-height: 1.87;
   letter-spacing: 0.06em;
-  color: var(--main-write-color);
+  color: $main-write-color;
 
-  background-color: var(--hover-color);
+  background-color: $hover-color;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
   border-color: transparent;
   cursor: pointer;
-  transition: background-color var(--transition-duration-250ms) var(--cubic-bezier),
-              box-shadow var(--transition-duration-250ms) var(--cubic-bezier),
-              border-color var(--transition-duration-250ms) var(--cubic-bezier);
+  transition: background-color $transition-duration-250ms $cubic-bezier,
+    box-shadow $transition-duration-250ms $cubic-bezier,
+    border-color $transition-duration-250ms $cubic-bezier;
 }
 .form-modal-btn:hover,
 .form-modal-btn:focus {
   background-color: #188ce8;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
-  border-color: var(--hover-color);
+  border-color: $hover-color;
   outline: none;
 }
 
@@ -1099,12 +1017,12 @@ color: red;
 /* Анимация Модального окна */
 .backdrop.animate-modal {
   animation-name: scale;
-  animation-duration: var(--transition-duration-250ms);
-  animation-timing-function: var(--cubic-bezier);
+  animation-duration: $transition-duration-250ms;
+  animation-timing-function: $cubic-bezier;
 }
 .backdrop.is-hidden.animate-modal {
   animation-name: scale;
-  animation-duration: var(--transition-duration-250ms);
-  animation-timing-function: var(--cubic-bezier);
+  animation-duration: $transition-duration-250ms;
+  animation-timing-function: $cubic-bezier;
   animation-direction: reverse;
 }
