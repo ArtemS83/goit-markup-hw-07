@@ -1,0 +1,297 @@
+/*                               Модальное окно */
+.backdrop {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.backdrop.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+.form-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  min-width: 528px;
+  min-height: 581px;
+  padding-left: 40px;
+  padding-top: 40px;
+  padding-right: 40px;
+  padding-bottom: 40px;
+
+  background-color: $main-background-color;
+
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+.form-modal-title {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.15;
+}
+.form-modal-button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+
+  background-color: $main-background-color;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+
+  transition: border-color $transition-duration-250ms $cubic-bezier;
+}
+.btn-close {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 18px;
+  height: 18px;
+
+  transition: fill $transition-duration-250ms $cubic-bezier;
+}
+.form-modal-button:hover .btn-close,
+.form-modal-button:focus .btn-close {
+  fill: $hover-color;
+}
+.form-modal-button:focus {
+  outline: none;
+  border-color: $hover-color;
+}
+.form-modal-field {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 28px;
+}
+
+.form-modal-comments-wrapper {
+  position: relative;
+
+  margin-bottom: 20px;
+}
+.form-modal-checkbox-wrapper {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 30px;
+}
+.form-modal-input,
+.form-modal-textarea {
+  margin: 0;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-right: 16px;
+
+  border: 1px solid rgba(33, 33, 33, 0.2);
+  border-radius: 4px;
+
+  cursor: pointer;
+  transition: border-color $transition-duration-250ms $cubic-bezier;
+}
+.form-modal-input {
+  width: 100%;
+  height: 40px;
+  padding-left: 42px;
+}
+.form-modal-textarea {
+  padding-left: 16px;
+  width: 100%;
+  height: 120px;
+}
+.form-modal-comments-wrapper .form-modal-label {
+  left: 16px;
+}
+
+.form-modal-input,
+.form-modal-textarea,
+.form-modal-label {
+  font-family: $main-font;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.14;
+  letter-spacing: 0.01em;
+  color: $text-color;
+}
+.form-modal-label {
+  position: absolute;
+  left: 42px;
+  top: 12px;
+
+  transition: font-size $transition-duration-250ms $cubic-bezier,
+    line-height $transition-duration-250ms $cubic-bezier,
+    color $transition-duration-250ms $cubic-bezier,
+    transform $transition-duration-250ms $cubic-bezier;
+}
+
+.form-modal-icon {
+  position: absolute;
+  left: 16px;
+  top: 11px;
+
+  width: 18px;
+  height: 18px;
+
+  transition: fill $transition-duration-250ms $cubic-bezier;
+}
+.form-modal-input:focus + .form-modal-label,
+.form-modal-input:hover + .form-modal-label,
+.form-modal-input:not(:placeholder-shown) + .form-modal-label {
+  font-size: 12px;
+  line-height: 1.17;
+  color: $hover-color;
+
+  transform: translate(-28px, -30px);
+}
+.form-modal-input:focus ~ .form-modal-icon,
+.form-modal-input:hover ~ .form-modal-icon,
+.form-modal-input:focus:not(:placeholder-shown) ~ .form-modal-icon,
+.form-modal-input:hover:not(:placeholder-shown) ~ .form-modal-icon {
+  fill: $hover-color;
+}
+
+.form-modal-input:not(:placeholder-shown) ~ .form-modal-icon {
+  fill: inherit;
+}
+.form-modal-input:focus,
+.form-modal-input:hover,
+.form-modal-textarea:focus,
+.form-modal-textarea:hover,
+.form-modal-input:focus:not(:placeholder-shown),
+.form-modal-textarea:focus:not(:placeholder-shown),
+.form-modal-input:hover:not(:placeholder-shown),
+.form-modal-textarea:hover:not(:placeholder-shown) {
+  border-color: $hover-color;
+  outline: none;
+}
+.form-modal-textarea:not(:placeholder-shown),
+.form-modal-input:not(:placeholder-shown) {
+  border: 1px solid rgba(33, 33, 33, 0.2);
+}
+.form-modal-textarea:focus + .form-modal-label,
+.form-modal-textarea:hover + .form-modal-label,
+.form-modal-textarea:not(:placeholder-shown) + .form-modal-label {
+  font-size: 12px;
+  line-height: 1.17;
+  color: $hover-color;
+
+  transform: translate(-2px, -30px);
+}
+
+.form-modal-checkbox-label {
+  line-height: 1.71;
+  color: $text-color;
+  cursor: pointer;
+}
+/* Cделаем временно подчеркивание для визуализации */
+/* .form-modal-checkbox:checked ~ .form-modal-checkbox-label {
+color: red;
+} */
+.form-modal-checkbox:checked ~ .form-modal-icon-check {
+  border-color: transparent;
+  background-color: $hover-color;
+}
+/* Для доступности при фокусе на чекбокс зададим тень */
+.form-modal-checkbox:focus ~ .form-modal-icon-check,
+.form-modal-checkbox:hover ~ .form-modal-icon-check {
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
+}
+.form-modal-icon-check {
+  margin-right: 8px;
+  width: 16px;
+  height: 15px;
+
+  border: 2px solid $main-title-color;
+  border-radius: 2px;
+  fill: $main-write-color;
+  cursor: pointer;
+
+  transition: border-color $transition-duration-250ms $cubic-bezier,
+    background-color $transition-duration-250ms $cubic-bezier,
+    box-shadow $transition-duration-250ms $cubic-bezier;
+}
+.form-modal-link {
+  color: $hover-color;
+
+  transition: border-color $transition-duration-250ms $cubic-bezier;
+}
+.form-modal-link:focus {
+  outline: none;
+  border: 1px solid $hover-color;
+  border-radius: 2px;
+}
+.form-modal-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-left: auto;
+  margin-right: auto;
+  width: 200px;
+  height: 50px;
+
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 1.87;
+  letter-spacing: 0.06em;
+  color: $main-write-color;
+
+  background-color: $hover-color;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  border-color: transparent;
+  cursor: pointer;
+  transition: background-color $transition-duration-250ms $cubic-bezier,
+    box-shadow $transition-duration-250ms $cubic-bezier,
+    border-color $transition-duration-250ms $cubic-bezier;
+}
+.form-modal-btn:hover,
+.form-modal-btn:focus {
+  background-color: #188ce8;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  border-color: $hover-color;
+  outline: none;
+}
+
+/* Подключение Аннимации на Модальное окно */
+@keyframes scale {
+  from {
+    transform: scale3d(0, 0, 0);
+  }
+
+  to {
+    transform: scale3d(1, 1, 1);
+  }
+}
+/* Анимация Модального окна */
+.backdrop.animate-modal {
+  animation-name: scale;
+  animation-duration: $transition-duration-250ms;
+  animation-timing-function: $cubic-bezier;
+}
+.backdrop.is-hidden.animate-modal {
+  animation-name: scale;
+  animation-duration: $transition-duration-250ms;
+  animation-timing-function: $cubic-bezier;
+  animation-direction: reverse;
+}
