@@ -13,11 +13,7 @@
       rel="stylesheet"
     />
 
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/0.7.0/modern-normalize.min.css"
-    />
-    <link rel="stylesheet" href="./css/main.min.css">
+    <link rel="stylesheet" href="./css/main.min.css" />
   </head>
   <body>
     <!-- Шапка сайта -->
@@ -486,39 +482,69 @@
           </svg>
         </button>
         <label class="form-modal-field">
-          <input class="form-modal-input" type="text" name="name" placeholder=" " required/>
+          <input
+            class="form-modal-input"
+            type="text"
+            name="name"
+            placeholder=" "
+            required
+          />
           <span class="form-modal-label">Имя</span>
-          <svg  class="form-modal-icon">
+          <svg class="form-modal-icon">
             <use href="./images/sprite.svg#icon-person"></use>
           </svg>
         </label>
         <label class="form-modal-field">
-          <input class="form-modal-input" type="tel" name="tel" placeholder=" " required/>
+          <input
+            class="form-modal-input"
+            type="tel"
+            name="tel"
+            placeholder=" "
+            required
+          />
           <span class="form-modal-label">Телефон</span>
-          <svg  class="form-modal-icon">
+          <svg class="form-modal-icon">
             <use href="./images/sprite.svg#icon-form-phone"></use>
           </svg>
         </label>
         <label class="form-modal-field">
-          <input class="form-modal-input" type="email" name="email" placeholder=" "/>
+          <input
+            class="form-modal-input"
+            type="email"
+            name="email"
+            placeholder=" "
+          />
           <span class="form-modal-label">Почта</span>
-          <svg  class="form-modal-icon">
+          <svg class="form-modal-icon">
             <use href="./images/sprite.svg#icon-form-email"></use>
           </svg>
         </label>
         <!-- Оставим в диве, сделаем вторым вариантом old school -->
         <div class="form-modal-comments-wrapper">
-          <textarea class="form-modal-textarea" name="comments" id="comments" placeholder=" "></textarea>
+          <textarea
+            class="form-modal-textarea"
+            name="comments"
+            id="comments"
+            placeholder=" "
+          ></textarea>
           <label class="form-modal-label" for="comments">Комментарий</label>
-        </div>    
-          <label class="form-modal-checkbox-wrapper">
-            <input class="form-modal-checkbox visually-hidden" type="checkbox" name="policy" value="accept-policy" required/>
-          <svg  class="form-modal-icon-check">
+        </div>
+        <label class="form-modal-checkbox-wrapper">
+          <input
+            class="form-modal-checkbox visually-hidden"
+            type="checkbox"
+            name="policy"
+            value="accept-policy"
+            required
+          />
+          <svg class="form-modal-icon-check">
             <use href="./images/sprite.svg#icon-check"></use>
           </svg>
-            <span class="form-modal-checkbox-label">Соглашаюсь с рассылкой и принимаю
-              <a class="form-modal-link" href="">Условия договора</a></span>
-          </label>
+          <span class="form-modal-checkbox-label"
+            >Соглашаюсь с рассылкой и принимаю
+            <a class="form-modal-link" href="">Условия договора</a></span
+          >
+        </label>
         <button class="form-modal-btn" type="submit">Отправить</button>
       </form>
     </div>
