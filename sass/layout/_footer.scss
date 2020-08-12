@@ -14,12 +14,14 @@
   color: $main-write-color;
 }
 
-.address-mail,
+.address-mail {
+  line-height: 1.71;
+  color: rgba(255, 255, 255, 0.6);
+}
 .address-tel {
   line-height: 1.71;
   color: rgba(255, 255, 255, 0.6);
 }
-
 .footer-join {
   display: inline-block;
   margin-bottom: 20px;
@@ -30,11 +32,12 @@
 }
 .accent-link {
   transition: color $transition-duration-250ms $cubic-bezier;
+  &:hover,
+  &:focus {
+    color: $hover-color;
+  }
 }
-.accent-link:hover,
-.accent-link:focus {
-  color: $hover-color;
-}
+
 .footer .container {
   display: flex;
   align-items: baseline;
@@ -45,10 +48,11 @@
 }
 .footer-address .link {
   display: inline-block;
+  &:not(:last-child) {
+    margin-bottom: 9px;
+  }
 }
-.footer-address .link:not(:last-child) {
-  margin-bottom: 9px;
-}
+
 .footer-box-address {
   /* margin-right: 69px; */
   /* По макету стоит 69px,но не корректно узазаны границы первого бдока с лого */
@@ -70,6 +74,10 @@
   background-color: rgba(255, 255, 255, 0.1);
 
   transition: background-color $transition-duration-250ms $cubic-bezier;
+  &:hover,
+  &:focus {
+    background-color: $hover-color;
+  }
 }
 .footer-social-item .icon {
   width: 20px;
@@ -80,13 +88,6 @@
   margin-right: 10px;
 }
 
-.footer-social-item > a:hover,
-.footer-social-item > a:focus {
-  background-color: $hover-color;
-}
-/* .footer-form {
-  display: flex;
-} */
 .footer-form-input {
   margin-right: 12px;
   width: 358px;
@@ -106,11 +107,15 @@
 
   background-color: #2f303a;
   border: 1px solid rgba(255, 255, 255, 0.3);
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.15));
+  filter: drop-shadow (0px 4px 4px rgba(0, 0, 0, 0.15));
   border-radius: 4px;
   cursor: pointer;
 
   transition: border $transition-duration-250ms $cubic-bezier;
+  &:hover,
+  &:focus {
+    outline: 1px solid $main-write-color;
+  }
 }
 .footer-form-button {
   display: inline-flex;
@@ -134,12 +139,10 @@
   cursor: pointer;
 
   transition: outline $transition-duration-250ms $cubic-bezier;
-}
-.footer-form-button:hover,
-.footer-form-input:hover,
-.footer-form-button:focus,
-.footer-form-input:focus {
-  outline: 1px solid $main-write-color;
+  &:hover,
+  &:focus {
+    outline: 1px solid $main-write-color;
+  }
 }
 .footer-form-button .icon {
   margin-left: 10px;

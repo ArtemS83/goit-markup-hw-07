@@ -27,18 +27,18 @@
   background-color: $main-background-color;
 
   transition: border-color $transition-duration-250ms $cubic-bezier;
+  &:hover,
+  &:focus {
+    border-color: $hover-color;
+  }
 }
-.customers-item > a:hover,
-.customers-item > a:focus {
-  border-color: $hover-color;
-}
+
 .customers-icon {
   fill: $icon-color;
 
   transition: fill $transition-duration-250ms $cubic-bezier;
-}
-
-.customers-item > a:hover .customers-icon,
-.customers-item > a:focus .customers-icon {
-  fill: $hover-color;
+  .customers-item > a:hover &,
+  .customers-item > a:focus & {
+    fill: $hover-color;
+  }
 }

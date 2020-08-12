@@ -10,10 +10,11 @@
 }
 .about-item {
   width: 270px;
+  &:not(:last-child) {
+    margin-right: 30px;
+  }
 }
-.about-item:not(:last-child) {
-  margin-right: 30px;
-}
+
 .about-name {
   margin-top: 0;
   margin-bottom: 10px;
