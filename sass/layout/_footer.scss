@@ -66,7 +66,8 @@
 }
 .footer-social-item > a {
   @extend %flexCentred;
-  @include iconLinkSize(44px, 44px) background-color: rgba(255, 255, 255, 0.1);
+  @include iconLinkSize(44px, 44px);
+  background-color: rgba(255, 255, 255, 0.1);
 
   transition: background-color $transition-duration-250ms $cubic-bezier;
   &:hover,
