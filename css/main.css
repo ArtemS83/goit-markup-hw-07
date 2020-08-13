@@ -410,7 +410,11 @@ textarea {
   color: #2196f3;
 }
 
-.header > .container {
+.header {
+  border-bottom: 1px solid #ececec;
+}
+
+.header .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -470,10 +474,6 @@ textarea {
 .contakt-link:hover .icon-phone,
 .contakt-link:focus .icon-phone {
   fill: #2196f3;
-}
-
-.header {
-  border-bottom: 1px solid #ececec;
 }
 
 /*                       Hero */
@@ -1038,6 +1038,16 @@ color: red;
   padding-bottom: 60px;
 }
 
+.footer .container {
+  display: flex;
+  align-items: baseline;
+}
+
+.footer .logo {
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
 .white-studio {
   color: #ffffff;
 }
@@ -1071,16 +1081,6 @@ color: red;
 
 .accent-link:hover, .accent-link:focus {
   color: #2196f3;
-}
-
-.footer .container {
-  display: flex;
-  align-items: baseline;
-}
-
-.footer .logo {
-  display: inline-block;
-  margin-bottom: 20px;
 }
 
 .footer-address .link {

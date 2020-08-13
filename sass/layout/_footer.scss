@@ -4,6 +4,14 @@
   background-color: #2f303a;
   padding-top: 60px;
   padding-bottom: 60px;
+  .container {
+    display: flex;
+    align-items: baseline;
+  }
+  .logo {
+    display: inline-block;
+    margin-bottom: 20px;
+  }
 }
 .white-studio {
   color: $main-write-color;
@@ -38,14 +46,6 @@
   }
 }
 
-.footer .container {
-  display: flex;
-  align-items: baseline;
-}
-.footer .logo {
-  display: inline-block;
-  margin-bottom: 20px;
-}
 .footer-address .link {
   display: inline-block;
   &:not(:last-child) {
@@ -139,10 +139,10 @@
   &:focus {
     outline: 1px solid $main-write-color;
   }
-}
-.footer-form-button .icon {
-  margin-left: 10px;
-  width: 24px;
-  height: 24px;
-  fill: $main-write-color;
+  .icon {
+    margin-left: 10px;
+    width: 24px;
+    height: 24px;
+    fill: $main-write-color;
+  }
 }

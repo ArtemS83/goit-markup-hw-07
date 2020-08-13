@@ -47,11 +47,15 @@
     color: $hover-color;
   }
 }
-.header > .container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.header {
+  border-bottom: 1px solid #ececec;
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 }
+
 .nav {
   display: flex;
   align-items: center;
@@ -102,7 +106,4 @@
   .contakt-link:focus & {
     fill: $hover-color;
   }
-}
-.header {
-  border-bottom: 1px solid #ececec;
 }
