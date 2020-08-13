@@ -118,6 +118,17 @@
 
   cursor: pointer;
   transition: border-color $transition-duration-250ms $cubic-bezier;
+
+  &:focus,
+  &:hover,
+  &:focus:not(:placeholder-shown),
+  &:hover:not(:placeholder-shown) {
+    border-color: $hover-color;
+    outline: none;
+  }
+  &:not(:placeholder-shown) {
+    border: 1px solid rgba(33, 33, 33, 0.2);
+  }
 }
 .form-modal-textarea {
   margin: 0;
@@ -141,10 +152,18 @@
 
   cursor: pointer;
   transition: border-color $transition-duration-250ms $cubic-bezier;
-}
 
-.form-modal-comments-wrapper .form-modal-label {
-  left: 16px;
+  &:focus,
+  &:hover,
+  &:focus:not(:placeholder-shown),
+  &:hover:not(:placeholder-shown) {
+    border-color: $hover-color;
+    outline: none;
+  }
+
+  &:not(:placeholder-shown) {
+    border: 1px solid rgba(33, 33, 33, 0.2);
+  }
 }
 
 .form-modal-label {
@@ -164,8 +183,45 @@
     line-height $transition-duration-250ms $cubic-bezier,
     color $transition-duration-250ms $cubic-bezier,
     transform $transition-duration-250ms $cubic-bezier;
+
+  .form-modal-input:focus + &,
+  .form-modal-input:hover + &,
+  .form-modal-input:not(:placeholder-shown) + & {
+    font-size: 12px;
+    line-height: 1.17;
+    color: $hover-color;
+
+    transform: translate(-28px, -30px);
+  }
 }
-// Осталось переделать!!!!!!!!!!!!!!!!!
+.form-modal-textarea-label {
+  position: absolute;
+  left: 16px;
+  top: 12px;
+
+  font-family: $main-font;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.14;
+  letter-spacing: 0.01em;
+  color: $text-color;
+
+  transition: font-size $transition-duration-250ms $cubic-bezier,
+    line-height $transition-duration-250ms $cubic-bezier,
+    color $transition-duration-250ms $cubic-bezier,
+    transform $transition-duration-250ms $cubic-bezier;
+
+  .form-modal-textarea:focus + &,
+  .form-modal-textarea:hover + &,
+  .form-modal-textarea:not(:placeholder-shown) + & {
+    font-size: 12px;
+    line-height: 1.17;
+    color: $hover-color;
+
+    transform: translate(-2px, -30px);
+  }
+}
 .form-modal-icon {
   position: absolute;
   left: 16px;
@@ -175,50 +231,18 @@
   height: 18px;
 
   transition: fill $transition-duration-250ms $cubic-bezier;
-}
-.form-modal-input:focus + .form-modal-label,
-.form-modal-input:hover + .form-modal-label,
-.form-modal-input:not(:placeholder-shown) + .form-modal-label {
-  font-size: 12px;
-  line-height: 1.17;
-  color: $hover-color;
 
-  transform: translate(-28px, -30px);
+  .form-modal-input:focus ~ &,
+  .form-modal-input:hover ~ &,
+  .form-modal-input:focus:not(:placeholder-shown) ~ &,
+  .form-modal-input:hover:not(:placeholder-shown) ~ & {
+    fill: $hover-color;
+  }
+  .form-modal-input:not(:placeholder-shown) ~ & {
+    fill: inherit;
+  }
 }
-.form-modal-input:focus ~ .form-modal-icon,
-.form-modal-input:hover ~ .form-modal-icon,
-.form-modal-input:focus:not(:placeholder-shown) ~ .form-modal-icon,
-.form-modal-input:hover:not(:placeholder-shown) ~ .form-modal-icon {
-  fill: $hover-color;
-}
-
-.form-modal-input:not(:placeholder-shown) ~ .form-modal-icon {
-  fill: inherit;
-}
-.form-modal-input:focus,
-.form-modal-input:hover,
-.form-modal-textarea:focus,
-.form-modal-textarea:hover,
-.form-modal-input:focus:not(:placeholder-shown),
-.form-modal-textarea:focus:not(:placeholder-shown),
-.form-modal-input:hover:not(:placeholder-shown),
-.form-modal-textarea:hover:not(:placeholder-shown) {
-  border-color: $hover-color;
-  outline: none;
-}
-.form-modal-textarea:not(:placeholder-shown),
-.form-modal-input:not(:placeholder-shown) {
-  border: 1px solid rgba(33, 33, 33, 0.2);
-}
-.form-modal-textarea:focus + .form-modal-label,
-.form-modal-textarea:hover + .form-modal-label,
-.form-modal-textarea:not(:placeholder-shown) + .form-modal-label {
-  font-size: 12px;
-  line-height: 1.17;
-  color: $hover-color;
-
-  transform: translate(-2px, -30px);
-}
+// Осталось переделать!!!!!!!!!!!!!!!!!
 
 .form-modal-checkbox-label {
   line-height: 1.71;
@@ -229,15 +253,7 @@
 /* .form-modal-checkbox:checked ~ .form-modal-checkbox-label {
 color: red;
 } */
-.form-modal-checkbox:checked ~ .form-modal-icon-check {
-  border-color: transparent;
-  background-color: $hover-color;
-}
-/* Для доступности при фокусе на чекбокс зададим тень */
-.form-modal-checkbox:focus ~ .form-modal-icon-check,
-.form-modal-checkbox:hover ~ .form-modal-icon-check {
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
-}
+
 .form-modal-icon-check {
   margin-right: 8px;
   width: 16px;
@@ -251,17 +267,29 @@ color: red;
   transition: border-color $transition-duration-250ms $cubic-bezier,
     background-color $transition-duration-250ms $cubic-bezier,
     box-shadow $transition-duration-250ms $cubic-bezier;
+
+  .form-modal-checkbox:checked ~ & {
+    border-color: transparent;
+    background-color: $hover-color;
+  }
+  /* Для доступности при фокусе на чекбокс зададим тень */
+  .form-modal-checkbox:focus ~ &,
+  .form-modal-checkbox:hover ~ & {
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
+  }
 }
 .form-modal-link {
   color: $hover-color;
 
   transition: border-color $transition-duration-250ms $cubic-bezier;
+
+  &:focus {
+    outline: none;
+    border: 1px solid $hover-color;
+    border-radius: 2px;
+  }
 }
-.form-modal-link:focus {
-  outline: none;
-  border: 1px solid $hover-color;
-  border-radius: 2px;
-}
+
 .form-modal-btn {
   display: flex;
   align-items: center;
@@ -287,34 +315,12 @@ color: red;
   transition: background-color $transition-duration-250ms $cubic-bezier,
     box-shadow $transition-duration-250ms $cubic-bezier,
     border-color $transition-duration-250ms $cubic-bezier;
-}
-.form-modal-btn:hover,
-.form-modal-btn:focus {
-  background-color: #188ce8;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
-  border-color: $hover-color;
-  outline: none;
-}
 
-/* Подключение Аннимации на Модальное окно */
-@keyframes scale {
-  from {
-    transform: scale3d(0, 0, 0);
+  &:hover,
+  &:focus {
+    background-color: #188ce8;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+    border-color: $hover-color;
+    outline: none;
   }
-
-  to {
-    transform: scale3d(1, 1, 1);
-  }
-}
-/* Анимация Модального окна */
-.backdrop.animate-modal {
-  animation-name: scale;
-  animation-duration: $transition-duration-250ms;
-  animation-timing-function: $cubic-bezier;
-}
-.backdrop.is-hidden.animate-modal {
-  animation-name: scale;
-  animation-duration: $transition-duration-250ms;
-  animation-timing-function: $cubic-bezier;
-  animation-direction: reverse;
 }

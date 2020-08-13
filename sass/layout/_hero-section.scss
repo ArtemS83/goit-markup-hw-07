@@ -53,10 +53,10 @@
   outline: none;
 
   transition: background-color $transition-duration-250ms $cubic-bezier,
-    border $transition-duration-250ms $cubic-bezier;
+    outline $transition-duration-250ms $cubic-bezier;
   &:hover,
   &:focus {
     background-color: #2196f3;
-    border: 1px solid $main-write-color;
+    outline: 1px solid $main-write-color;
   }
 }
