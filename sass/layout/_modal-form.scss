@@ -90,10 +90,7 @@
 .form-modal-checkbox-wrapper {
   position: relative;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
+  @extend %flexCentred;
   margin-bottom: 30px;
 }
 .form-modal-input {
@@ -291,10 +288,7 @@ color: red;
 }
 
 .form-modal-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
+  @extend %flexCentred;
   margin-left: auto;
   margin-right: auto;
   width: 200px;

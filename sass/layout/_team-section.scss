@@ -64,13 +64,8 @@
 }
 
 .name-social-item > a {
-  display: flex;
-  width: 44px;
-  height: 44px;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
-
+  @extend %flexCentred;
+  @include iconLinkSize(44px, 44px);
   transition: background-color $transition-duration-250ms $cubic-bezier;
   &:hover,
   &:focus {
