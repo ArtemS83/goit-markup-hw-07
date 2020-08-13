@@ -315,6 +315,10 @@ textarea {
 }
 
 /* "Эффект присутствия на странице */
+.nav-list .item {
+  position: relative;
+}
+
 .nav-link.current {
   color: #2196f3;
 }
@@ -328,10 +332,6 @@ textarea {
   border-radius: 2px;
   background-color: #2196f3;
   display: block;
-}
-
-.nav-list .item {
-  position: relative;
 }
 
 /* Скрываем визуально текст и чекбокс*/
